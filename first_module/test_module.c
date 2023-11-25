@@ -1,14 +1,21 @@
+#include <linux/hash.h>
+#include <linux/jiffies.h>
+#include <linux/gcd.h>
 #include <linux/init.h>
-#include <linux/module.h>
 #include <linux/kernel.h>
+#include <linux/module.h>
+#include <asm/uaccess.h>
+#include <asm/param.h>
 
-static int __init _init(void) {
-    printk(KERN_INFO "First module!\n");
+int _init(void) {
+    // printk(KERN_INFO "First module!\n");
+    // printk(KERN_INFO "%lu\n", jiffies); // number of timer interrupts that have occurred since the system was booted
+    // printk(KERN_INFO "%lu\n", HZ); // tick rate 
     return 0;
 }
 
-static void __exit _exit(void) {
-    printk(KERN_INFO "bye!\n");
+void _exit(void) {
+    printk(KERN_INFO "%lu\n", gcd(3300, 24));
 }
 
 module_init(_init);

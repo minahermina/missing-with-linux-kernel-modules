@@ -1,0 +1,1 @@
+savedcmd_/home/mina/modules/first_module/Module.symvers :=  scripts/mod/modpost -M  -a    -N  -o /home/mina/modules/first_module/Module.symvers -n -T /home/mina/modules/first_module/modules.order -i Module.symvers -e 

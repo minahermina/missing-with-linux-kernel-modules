@@ -1,0 +1,1 @@
+savedcmd_/home/mina/modules/first_module/test_module.mod := printf '%s\n'   test_module.o | awk '!x[$$0]++ { print("/home/mina/modules/first_module/"$$0) }' > /home/mina/modules/first_module/test_module.mod
