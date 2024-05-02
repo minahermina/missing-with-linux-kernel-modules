@@ -1,5 +1,5 @@
-obj-m += test_module.o
-module_name=test_module.ko
+obj-m += deadlock.o
+module_name=deadlock.ko
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
