@@ -1,0 +1,5 @@
+#!/bin/bash
+
+module_name="test_module"
+sudo insmod "$module_name".ko
+
