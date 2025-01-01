@@ -3,6 +3,7 @@
 #include <linux/init.h>
 #include <linux/kthread.h>
 #include <linux/delay.h>
+#include <linux/mutex.h>
 
 MODULE_LICENSE("GPL");
 
@@ -12,7 +13,7 @@ static struct task_struct *thread2;
 static struct mutex mutex1;
 static struct mutex mutex2;
 
-static int thread_func1(voiddata)
+static int thread_func1(void *data)
 {
     mutex_lock(&mutex1);
     printk(KERN_INFO "Thread 1 acquired mutex1\n");
@@ -38,7 +39,7 @@ static int thread_func2(void *data)
     return 0;
 }
 
-static int init deadlock_init(void)
+static int __init deadlock_init(void)
 {
     mutex_init(&mutex1);
     mutex_init(&mutex2);
@@ -49,7 +50,7 @@ static int init deadlock_init(void)
     return 0;
 }
 
-static void exit deadlock_exit(void)
+static void __exit deadlock_exit(void)
 {
     kthread_stop(thread1);
     kthread_stop(thread2);

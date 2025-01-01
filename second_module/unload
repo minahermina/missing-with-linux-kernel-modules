@@ -1,5 +1,0 @@
-#!/bin/bash
-
-module_name="test_module"
-sudo rmmod "$module_name"
-
